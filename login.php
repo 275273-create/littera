@@ -1,13 +1,22 @@
-```php
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $erroLogin = false;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST["usuario"] ?? "";
-    $senha = $_POST["senha"] ?? "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario = $_POST['usuario'] ?? '';
+    $senha = $_POST['senha'] ?? '';
 
-    if ($usuario === "joaogabriel" && $senha === "1234") {
-        header("Location: index.html");
+    if ($usuario === 'joaogabriel' && $senha === '1234') {
+        session_regenerate_id(true);
+        $_SESSION['usuario'] = [
+            'id' => 1,
+            'nome' => 'João Gabriel',
+            'curso' => 'Design',
+        ];
+        header('Location: recomendacoes-e-meus-livros/meus-livros.php', true, 303);
         exit;
     } else {
         $erroLogin = true;
@@ -261,7 +270,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
  
   <header class="cabecalho">
-    <a href="#" class="logo">
+    <a href="index.php" class="logo">
       <div class="pontos-logo">
         <span class="ponto ponto-laranja"></span>
         <span class="ponto ponto-limao"></span>
@@ -295,6 +304,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             name="usuario"
             class="campo-texto" 
             placeholder="seu@email.com" 
+            autocomplete="username"
             required
           >
         </div>
@@ -308,6 +318,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             name="senha"
             class="campo-texto" 
             placeholder="••••••••" 
+            autocomplete="current-password"
             required
           >
         </div>
@@ -317,16 +328,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="checkbox" class="checkbox">
             <span>Lembrar de mim</span>
           </label>
-          <a href="#" class="link">Esqueceu a senha?</a>
+          <span class="link">Acesso de demonstração: joaogabriel / 1234</span>
         </div>
         <button type="submit" class="btn-entrar">Entrar</button>
 
       </form>
 
     
-      <div class="rodape-login">
-        Ainda não possui conta? <a href="#" class="link">Criar conta</a>
-      </div>
+      <div class="rodape-login">Recuperação de senha e cadastro não fazem parte desta demonstração.</div>
 
     </div>
   </main>
@@ -338,4 +347,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
-```

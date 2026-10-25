@@ -250,8 +250,15 @@ if (isset($_GET['acao'])) {
         <span class="section-subtitle">CONTINUE EXPLORANDO</span>
 
         <div class="d-flex flex-column gap-3 mt-3" id="listaRecomendacoes">
+            <label class="visually-hidden" for="buscarLivros">Buscar nas recomendações</label>
+            <input
+              class="form-control form-control-sm"
+              id="buscarLivros"
+              type="search"
+              placeholder="Buscar nas recomendações"
+            >
           
-          <div class="d-flex gap-3 align-items-center recommendation-item" role="button" tabindex="0">
+            <div class="d-flex gap-3 align-items-center recommendation-item" role="button" tabindex="0">
             <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=100&q=80" class="mini-cover" alt="Capa">
             <div>
               <h6 class="mb-0 text-white fw-bold small">O conto da Aia</h6>
