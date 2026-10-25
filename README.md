@@ -20,6 +20,7 @@ Rotas principais:
 - `http://127.0.0.1:8000/pag-livro/livro.php`
 
 Os dados de livros, avaliações e usuários são de demonstração. Algumas alterações ficam na sessão do navegador e não são gravadas em banco de dados.
+O acesso de demonstração usa `joaogabriel` como usuário e `1234` como senha; não use essas credenciais em um sistema real.
 
 ## Publicação
 

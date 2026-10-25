@@ -1,6 +1,6 @@
 # Landing page do Littera
 
-Página independente para apresentar o Littera. A ilustração de livros é feita em CSS, é identificada como ilustração e não representa capturas de tela reais. Esta entrega não implementa autenticação.
+Página de apresentação do Littera. A ilustração de livros é feita em CSS, é identificada como ilustração e não representa capturas de tela reais. O login é demonstrativo e não usa banco de dados.
 
 ## Executar
 
@@ -14,7 +14,7 @@ Abra `http://127.0.0.1:8000/` no navegador. O arquivo raiz encaminha para esta p
 
 ## Configurar o link de login
 
-Esta versão não implementa autenticação. Os botões de entrada exibem um aviso de que o login ainda não está conectado.
+Os botões de entrada abrem o login demonstrativo. Use `joaogabriel` como usuário e `1234` como senha.
 
 ## Arquivos
 

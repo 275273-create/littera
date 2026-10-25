@@ -79,34 +79,34 @@ $atributoLogin = $loginDisponivel ? '' : 'data-login-pendente aria-disabled="tru
         <p>Da curiosidade pela próxima história até a vontade de conversar sobre a que acabou de ler.</p>
       </div>
       <div class="grade-recursos">
-        <a class="cartao-recurso" href="../recomendacoes-e-meus-livros/recomendacoes.php">
+        <article class="cartao-recurso">
           <span class="icone-recurso">⌕</span>
           <p class="numero-recurso">01 / DESCOBRIR</p>
           <h3>Descubra livros</h3>
           <p>Explore obras e encontre novas histórias para levar com você.</p>
-          <span class="seta-recurso" aria-hidden="true">↗</span>
-        </a>
-        <a class="cartao-recurso" href="../recomendacoes-e-meus-livros/meus-livros.php">
+          <a class="seta-recurso" href="../recomendacoes-e-meus-livros/recomendacoes.php" aria-label="Abrir recomendações">↗</a>
+        </article>
+        <article class="cartao-recurso">
           <span class="icone-recurso">▤</span>
           <p class="numero-recurso">02 / ORGANIZAR</p>
           <h3>Meus livros</h3>
           <p>Organize e acompanhe os livros que fazem parte da sua jornada.</p>
-          <span class="seta-recurso" aria-hidden="true">↗</span>
-        </a>
-        <a class="cartao-recurso" href="../recomendacoes-e-meus-livros/livro.php?id=5">
+          <a class="seta-recurso" href="../recomendacoes-e-meus-livros/meus-livros.php" aria-label="Abrir meus livros">↗</a>
+        </article>
+        <article class="cartao-recurso">
           <span class="icone-recurso">✎</span>
           <p class="numero-recurso">03 / COMPARTILHAR</p>
           <h3>Compartilhe opiniões</h3>
           <p>Registre suas impressões e avaliações sobre as obras que leu.</p>
-          <span class="seta-recurso" aria-hidden="true">↗</span>
-        </a>
-        <a class="cartao-recurso" href="../comunidade/index.php">
+          <a class="seta-recurso" href="../recomendacoes-e-meus-livros/livro.php?id=5" aria-label="Avaliar um livro">↗</a>
+        </article>
+        <article class="cartao-recurso">
           <span class="icone-recurso">✳</span>
           <p class="numero-recurso">04 / CONECTAR</p>
           <h3>Conheça perspectivas</h3>
           <p>Descubra livros pelas experiências e recomendações de outros leitores.</p>
-          <span class="seta-recurso" aria-hidden="true">↗</span>
-        </a>
+          <a class="seta-recurso" href="../comunidade/index.php" aria-label="Abrir comunidade">↗</a>
+        </article>
       </div>
     </section>
 

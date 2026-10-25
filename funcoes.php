@@ -44,6 +44,12 @@ function ler(string $nome): array
                 'curso' => 'Psicologia',
                 'seguindo' => [1, 2],
             ],
+            [
+                'id' => 4,
+                'nome' => 'João Gabriel',
+                'curso' => 'Design',
+                'seguindo' => [1, 2, 3],
+            ],
         ],
         'avaliacoes' => [
             [

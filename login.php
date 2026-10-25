@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($usuario === 'joaogabriel' && $senha === '1234') {
         session_regenerate_id(true);
         $_SESSION['usuario'] = [
-            'id' => 1,
+            'id' => 4,
             'nome' => 'João Gabriel',
             'curso' => 'Design',
         ];

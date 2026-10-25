@@ -77,6 +77,15 @@ $avaliacoesUsuario = $_SESSION['avaliacoes_livros'][$id] ?? [];
 if (!is_array($avaliacoesUsuario)) {
     $avaliacoesUsuario = [];
 }
+$totalAvaliacoes = (int) ($livro['avaliacoes'] ?? 0);
+$somaNotas = (float) ($livro['nota'] ?? 0) * $totalAvaliacoes;
+foreach ($avaliacoesUsuario as $avaliacao) {
+    if (is_array($avaliacao) && isset($avaliacao['nota']) && is_numeric($avaliacao['nota'])) {
+        $somaNotas += (int) $avaliacao['nota'];
+        $totalAvaliacoes++;
+    }
+}
+$notaMedia = $totalAvaliacoes > 0 ? $somaNotas / $totalAvaliacoes : 0;
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -119,9 +128,9 @@ if (!is_array($avaliacoesUsuario)) {
           <p class="by">por <?= escapar($livro['autor']) ?></p>
 
           <div class="book-rating">
-            <span class="stars"><?= estrelas((float) $livro['nota']) ?></span>
-            <b><?= number_format((float) $livro['nota'], 1, ',', '.') ?></b>
-            <span class="muted"><?= (int) $livro['avaliacoes'] ?> avaliações</span>
+            <span class="stars"><?= estrelas($notaMedia) ?></span>
+            <b><?= number_format($notaMedia, 1, ',', '.') ?></b>
+            <span class="muted"><?= $totalAvaliacoes ?> avaliações</span>
           </div>
 
           <p class="detail-about">
