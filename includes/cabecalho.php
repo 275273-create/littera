@@ -1,10 +1,10 @@
 <?php
 $paginaAtual = $paginaAtual ?? '';
 $baseNavegacao = $baseNavegacao ?? '';
-$inicioHref = $inicioHref ?? $baseNavegacao . 'index.php';
-$meusLivrosHref = $meusLivrosHref ?? $baseNavegacao . 'meus-livros.php';
-$recomendacoesHref = $recomendacoesHref ?? $baseNavegacao . 'recomendacoes.php';
-$comunidadeHref = $comunidadeHref ?? $baseNavegacao . '../comunidade/index.php';
+$inicioHref = $inicioHref ?? '../littera-landing/index.php';
+$meusLivrosHref = $meusLivrosHref ?? '../recomendacoes-e-meus-livros/meus-livros.php';
+$recomendacoesHref = $recomendacoesHref ?? '../recomendacoes-e-meus-livros/recomendacoes.php';
+$comunidadeHref = $comunidadeHref ?? '../comunidade/index.php';
 $buscaAction = $buscaAction ?? $recomendacoesHref;
 ?>
 <header class="site-head">
@@ -19,7 +19,7 @@ $buscaAction = $buscaAction ?? $recomendacoesHref;
 
   <nav id="navegacao" class="main-nav">
     <a href="<?= htmlspecialchars($inicioHref, ENT_QUOTES, 'UTF-8') ?>">INÍCIO</a>
-    <a href="#" aria-label="Explorar (página a integrar)">EXPLORAR</a>
+    <a href="<?= htmlspecialchars($recomendacoesHref, ENT_QUOTES, 'UTF-8') ?>" aria-label="Explorar recomendações">EXPLORAR</a>
     <a class="<?= $paginaAtual === 'meus-livros' ? 'on' : '' ?>" href="<?= htmlspecialchars($meusLivrosHref, ENT_QUOTES, 'UTF-8') ?>">MEUS LIVROS</a>
     <a class="<?= $paginaAtual === 'recomendacoes' ? 'on' : '' ?>" href="<?= htmlspecialchars($recomendacoesHref, ENT_QUOTES, 'UTF-8') ?>">RECOMENDAÇÕES</a>
     <a class="<?= $paginaAtual === 'comunidade' ? 'on' : '' ?>" href="<?= htmlspecialchars($comunidadeHref, ENT_QUOTES, 'UTF-8') ?>">COMUNIDADE</a>

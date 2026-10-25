@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/config/login.php';
 
-$loginDestino = $loginDisponivel ? htmlspecialchars($loginUrl, ENT_QUOTES, 'UTF-8') : '#login-pendente';
+$loginDestino = htmlspecialchars($loginUrl, ENT_QUOTES, 'UTF-8');
 $atributoLogin = $loginDisponivel ? '' : 'data-login-pendente aria-disabled="true"';
 ?>
 <!doctype html>

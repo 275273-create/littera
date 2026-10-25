@@ -14,264 +14,10 @@ $buscaAction = $recomendacoesHref;
     <title>Littera | Comunidade</title>
     <link rel="stylesheet" href="../includes/cabecalho.css">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #101619;
-            color: #f1f2f1;
-            font-family: Arial, sans-serif;
-        }
-
-        header {
-            min-height: 76px;
-            padding: 0 32px;
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            border-bottom: 1px solid #293135;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-
-        .bolinhas {
-            display: flex;
-            gap: 3px;
-        }
-
-        .bolinhas span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .bolinhas span:nth-child(1) {
-            background: #ffbd59;
-        }
-
-        .bolinhas span:nth-child(2) {
-            background: #ff777d;
-        }
-
-        .bolinhas span:nth-child(3) {
-            background: #81d5d0;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
-
-        nav a {
-            color: #a0a5a6;
-            text-decoration: none;
-            font-size: 12px;
-            white-space: nowrap;
-        }
-
-        nav a:hover,
-        nav a.ativo {
-            color: #caff37;
-        }
-
-        .perfil {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-        }
-
-        .busca {
-            width: 145px;
-            padding: 11px 14px;
-            background: #303a40;
-            border: none;
-            border-radius: 25px;
-            color: white;
-            outline: none;
-        }
-
-        .busca::placeholder {
-            color: #92999b;
-        }
-
-        .foto-perfil {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #6b838e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .nome-perfil {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .seta {
-            color: #a0a5a6;
-            font-size: 12px;
-        }
-
-        main {
-            max-width: 1400px;
-            margin: 76px auto;
-            padding: 0 60px;
-        }
-
-        .subtitulo {
-            color: #a0a5a6;
-            font-size: 12px;
-        }
-
-        h1 {
-            margin: 12px 0;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 34px;
-        }
-
-        .descricao {
-            margin-bottom: 55px;
-            color: #a0a5a6;
-            font-size: 13px;
-        }
-
-        .conteudo {
-            display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(215px, 1fr);
-            gap: 65px;
-            align-items: start;
-        }
-
-        .avaliacao {
-            display: grid;
-            grid-template-columns: 22px 54px minmax(0, 1fr);
-            gap: 4px;
-            padding: 0 0 10px;
-            margin-bottom: 6px;
-            border-bottom: 1px solid #293135;
-        }
-
-        .avatar {
-            width: 21px;
-            height: 21px;
-            border-radius: 50%;
-            background: #596165;
-            background-image: url("data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwBQCdASoWABYAPu1srlKppaQiqAgBMB2JaQDPoA0vK0X85g+5edUHFYd8i8JKv9F+AAD+72MlBKhUHDnBKTJik0MRVYa44J1VhVz/JkfuD5APohrNFRbmgCpGv6XBMj4ddGIqJlLVSabR9tShO6/ErkNkc3pvoAAAAA==");
-            background-size: cover;
-            color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        .capa {
-            width: 54px;
-            height: 75px;
-            object-fit: cover;
-            border-radius: 2px;
-            background: #293135;
-        }
-
-        .dados {
-            min-width: 0;
-            padding-left: 4px;
-        }
-
-        .autor {
-            color: #e5e7e6;
-            font-size: 11px;
-            line-height: 1.5;
-        }
-
-        .nome-livro {
-            color: #caff37;
-        }
-
-        .estrelas {
-            margin: 3px 0 17px;
-            color: #caff37;
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
-
-        .comentario {
-            margin-bottom: 12px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 13px;
-            font-weight: bold;
-            line-height: 1.4;
-        }
-
-        .interacoes {
-            color: #92999b;
-            font-size: 10px;
-        }
-
-        aside h2 {
-            margin-bottom: 15px;
-            color: #a0a5a6;
-            font-size: 12px;
-            font-weight: normal;
-        }
-
-        .livro {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .livro img {
-            width: 38px;
-            height: 55px;
-            flex-shrink: 0;
-            object-fit: cover;
-            border-radius: 2px;
-            background: #293135;
-        }
-
-        .info-livro h3 {
-            margin-bottom: 6px;
-            font-size: 12px;
-            font-weight: normal;
-            line-height: 1.4;
-        }
-
-        .info-livro p {
-            margin-bottom: 4px;
-            color: #92999b;
-            font-size: 10px;
-        }
-
-        .nota {
-            color: #a0a5a6;
-            font-size: 10px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- CONEXÃO COM O JAVASCRIPT -->
-    <script src="../js/comunidade.js" defer></script>
+    <script src="assets/js/comunidade.js" defer></script>
 </head>
 
 <body>
@@ -300,7 +46,7 @@ $buscaAction = $recomendacoesHref;
 
                     <img
                         class="capa"
-                        src="o hobbit.png"
+                        src="assets/images/o-hobbit.png"
                         alt="Capa de O Hobbit"
                     >
 
@@ -334,7 +80,7 @@ $buscaAction = $recomendacoesHref;
 
                     <img
                         class="capa"
-                        src="torto arrado.png"
+                        src="assets/images/torto-arrado.png"
                         alt="Capa de Torto Arado"
                     >
 
@@ -369,7 +115,7 @@ $buscaAction = $recomendacoesHref;
 
                     <img
                         class="capa"
-                        src="a biblioteca da meia noite.png"
+                        src="assets/images/a-biblioteca-da-meia-noite.png"
                         alt="Capa de A Biblioteca da Meia-Noite"
                     >
 
@@ -403,7 +149,7 @@ $buscaAction = $recomendacoesHref;
 
                     <img
                         class="capa"
-                        src="duna.png"
+                        src="assets/images/duna.png"
                         alt="Capa de Duna"
                     >
 
@@ -438,7 +184,7 @@ $buscaAction = $recomendacoesHref;
                 <div class="livro">
 
                     <img
-                    src="Ensaio Sobre a Cegueira.png"
+                    src="assets/images/ensaio-sobre-a-cegueira.png"
                     alt="Capa do livro Ensaio Sobre a Cegueira"
                     >
 
@@ -453,7 +199,7 @@ $buscaAction = $recomendacoesHref;
                 <div class="livro">
 
                     <img
-                    src="A Paciente Silenciosa.png"
+                    src="assets/images/a-paciente-silenciosa.png"
                     alt="Capa de A Paciente Silenciosa"
                     >
 
@@ -468,7 +214,7 @@ $buscaAction = $recomendacoesHref;
                 <div class="livro">
 
                     <img
-                        src="o hobbit.png"
+                        src="assets/images/o-hobbit.png"
                         alt="Capa de O Hobbit"
                     >
 
@@ -483,7 +229,7 @@ $buscaAction = $recomendacoesHref;
                 <div class="livro">
 
                     <img
-                    src="Harry Potter e a Pedra Filosofal.png"
+                    src="assets/images/harry-potter-e-a-pedra-filosofal.png"
                     alt="Capa de Harry Potter e a Pedra Filosofal"
                     >
 
