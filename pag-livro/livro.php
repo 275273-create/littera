@@ -1,6 +1,12 @@
 <?php
 // Backend simulado. Os dados ficam na sessão e não usam banco de dados.
 session_start();
+$paginaAtual = '';
+$inicioHref = '../littera-landing/index.php';
+$meusLivrosHref = '../recomendacoes-e-meus-livros/meus-livros.php';
+$recomendacoesHref = '../recomendacoes-e-meus-livros/recomendacoes.php';
+$comunidadeHref = '../comunidade/index.php';
+$buscaAction = $recomendacoesHref;
 
 if (!isset($_SESSION['avaliacoes'])) $_SESSION['avaliacoes'] = [];
 if (!isset($_SESSION['minha_lista'])) $_SESSION['minha_lista'] = false;
@@ -72,6 +78,7 @@ if (isset($_GET['acao'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Ícones do Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../includes/cabecalho.css">
   
   <!-- CSS Personalizado -->
   <link rel="stylesheet" href="livro.css">
@@ -81,42 +88,7 @@ if (isset($_GET['acao'])) {
   <!-- FRAME CENTRAL / CARD TEMA ESCURO -->
   <div class="app-container" id="inicio">
     
-    <!-- HEADER / NAVIGATION BAR -->
-    <header class="navbar">
-      <div class="nav-container">
-        <div class="nav-left">
-          <a class="logo" href="#inicio" aria-label="LITTERA início">
-            <span class="logo-dots" aria-hidden="true">
-              <span class="dot dot-amber"></span>
-              <span class="dot dot-orange"></span>
-              <span class="dot dot-green"></span>
-            </span>
-            <span class="logo-text">LITTERA</span>
-          </a>
-
-          <nav class="nav-links" aria-label="Navegação principal">
-            <a href="#inicio" class="nav-link active">INÍCIO</a>
-            <a href="#explorar" class="nav-link">EXPLORAR</a>
-            <a href="#meus-livros" class="nav-link">MEUS LIVROS</a>
-            <a href="#recomendacoes" class="nav-link">RECOMENDAÇÕES</a>
-            <a href="#comunidade" class="nav-link">COMUNIDADE</a>
-          </nav>
-        </div>
-
-        <div class="nav-right">
-          <form class="search-box" action="explorar.php" method="get">
-            <input type="search" id="buscarLivros" name="busca" placeholder="Buscar Livros" aria-label="Buscar livros">
-            <button class="search-submit" type="submit" aria-label="Pesquisar livros">
-              <i class="bi bi-search search-icon" aria-hidden="true"></i>
-            </button>
-          </form>
-          <a class="user-profile" href="perfil.php" aria-label="Abrir perfil de João Gabriel">
-            <div class="user-avatar"><i class="bi bi-person-fill"></i></div>
-            <span class="user-name">João Gabriel</span>
-          </a>
-        </div>
-      </div>
-    </header>
+    <?php require __DIR__ . '/../includes/cabecalho.php'; ?>
 
     <!-- BLOCO SUPERIOR: CAPA + DETALHES + INFO -->
     <div class="row g-4 mb-4">

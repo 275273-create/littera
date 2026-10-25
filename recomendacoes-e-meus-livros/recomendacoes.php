@@ -2,6 +2,7 @@
 require __DIR__ . '/dados/livros-demo.php';
 
 $paginaAtual = 'recomendacoes';
+$inicioHref = '../littera-landing/index.php';
 $busca = trim($_GET['busca'] ?? '');
 
 $livrosBusca = [];
@@ -50,7 +51,7 @@ $populares = array_slice(array_values(array_filter(
         <?php if ($livrosBusca): ?>
           <div class="my-grid">
             <?php foreach ($livrosBusca as $livro): ?>
-              <?php require __DIR__ . '/includes/card-livro.php'; ?>
+              <?php require __DIR__ . '/../includes/card-livro.php'; ?>
             <?php endforeach; ?>
           </div>
         <?php else: ?>
@@ -71,7 +72,7 @@ $populares = array_slice(array_values(array_filter(
       </div>
       <div class="recommend-grid">
         <?php foreach ($recomendados as $livro): ?>
-          <?php require __DIR__ . '/includes/card-livro.php'; ?>
+          <?php require __DIR__ . '/../includes/card-livro.php'; ?>
         <?php endforeach; ?>
       </div>
     </section>
@@ -85,7 +86,7 @@ $populares = array_slice(array_values(array_filter(
       </div>
       <div class="recommend-grid">
         <?php foreach ($populares as $livro): ?>
-          <?php require __DIR__ . '/includes/card-livro.php'; ?>
+          <?php require __DIR__ . '/../includes/card-livro.php'; ?>
         <?php endforeach; ?>
       </div>
     </section>

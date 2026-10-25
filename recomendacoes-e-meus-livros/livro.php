@@ -2,6 +2,7 @@
 require __DIR__ . '/dados/livros-demo.php';
 
 $paginaAtual = '';
+$inicioHref = '../littera-landing/index.php';
 $id = filter_var($_GET['id'] ?? 0, FILTER_VALIDATE_INT) ?: 0;
 $livro = null;
 

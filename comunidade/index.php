@@ -1,9 +1,18 @@
+<?php
+$paginaAtual = 'comunidade';
+$inicioHref = '../littera-landing/index.php';
+$meusLivrosHref = '../recomendacoes-e-meus-livros/meus-livros.php';
+$recomendacoesHref = '../recomendacoes-e-meus-livros/recomendacoes.php';
+$comunidadeHref = 'index.php';
+$buscaAction = $recomendacoesHref;
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Littera | Comunidade</title>
+    <link rel="stylesheet" href="../includes/cabecalho.css">
 
     <style>
         * {
@@ -267,38 +276,7 @@
 
 <body>
 
-    <header>
-
-        <div class="logo">
-            <span class="bolinhas">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-            LITTERA
-        </div>
-
-        <nav>
-            <a href="#">INÍCIO</a>
-            <a href="#">EXPLORAR</a>
-            <a href="#">MEUS LIVROS</a>
-            <a href="#">RECOMENDAÇÕES</a>
-            <a href="#" class="ativo">COMUNIDADE</a>
-        </nav>
-
-        <div class="perfil">
-            <input
-                class="busca"
-                type="search"
-                placeholder="Buscar Livros"
-            >
-
-            <div class="foto-perfil">JG</div>
-
-            <span class="nome-perfil">João Gabriel</span>
-        </div>
-
-    </header>
+    <?php require __DIR__ . '/../includes/cabecalho.php'; ?>
 
     <main>
 
@@ -460,7 +438,7 @@
                 <div class="livro">
 
                     <img
-                    src="Ensaio Sobre a Cegueira .png"
+                    src="Ensaio Sobre a Cegueira.png"
                     alt="Capa do livro Ensaio Sobre a Cegueira"
                     >
 
@@ -475,7 +453,7 @@
                 <div class="livro">
 
                     <img
-                    src="A Paciente Silenciosa .png"
+                    src="A Paciente Silenciosa.png"
                     alt="Capa de A Paciente Silenciosa"
                     >
 
@@ -505,7 +483,7 @@
                 <div class="livro">
 
                     <img
-                    src="Harry Potter e a Pedra Filosofal .png"
+                    src="Harry Potter e a Pedra Filosofal.png"
                     alt="Capa de Harry Potter e a Pedra Filosofal"
                     >
 

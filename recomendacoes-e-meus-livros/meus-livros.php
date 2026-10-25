@@ -2,6 +2,7 @@
 require __DIR__ . '/dados/livros-demo.php';
 
 $paginaAtual = 'meus-livros';
+$inicioHref = '../littera-landing/index.php';
 $nomesStatus = [
     'quero_ler' => 'Quero ler',
     'lendo' => 'Lendo',
@@ -55,7 +56,7 @@ $livrosFiltrados = array_values(array_filter(
     <?php if ($livrosFiltrados): ?>
       <div class="my-grid">
         <?php foreach ($livrosFiltrados as $livro): ?>
-          <?php require __DIR__ . '/includes/card-livro.php'; ?>
+          <?php require __DIR__ . '/../includes/card-livro.php'; ?>
         <?php endforeach; ?>
       </div>
     <?php else: ?>
