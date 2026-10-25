@@ -1,0 +1,401 @@
+/* Fundo total da página */
+body.bg-outer {
+  background-color: #0b0d0e !important;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  padding: 30px 15px;
+  margin: 0;
+}
+
+/* Painel Principal Escuro (Moldura Central da Imagem) */
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #121517;
+  border-radius: 6px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Logo */
+.brand-logo {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.brand-dots {
+  color: #00e676;
+}
+
+/* Navegação Cabeçalho */
+.nav-link-custom {
+  color: #7d8590 !important;
+  font-size: 0.75rem !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0 !important;
+}
+
+.nav-link-custom:hover {
+  color: #ffffff !important;
+}
+
+/* Campo de Pesquisa */
+.search-box {
+  position: relative;
+  background-color: #1c2125;
+  border-radius: 20px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.75rem;
+  outline: none;
+  width: 110px;
+}
+
+.search-box input::placeholder {
+  color: #7d8590;
+}
+
+.search-box i {
+  color: #7d8590;
+  font-size: 0.75rem;
+}
+
+/* Títulos do Livro */
+.book-title {
+  color: #ffffff;
+  font-family: Georgia, serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+
+.author-text {
+  color: #7d8590;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.description-text {
+  color: #b0b8c1;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+/* Tag Indisponível */
+.badge-indisponivel {
+  background-color: #2b1315;
+  color: #ff5252;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dot-red {
+  width: 6px;
+  height: 6px;
+  background-color: #ff5252;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Botões */
+.btn-green {
+  background-color: #00e676;
+  color: #0d1114;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.btn-green:hover {
+  background-color: #00c853;
+  color: #ffffff;
+}
+
+.btn-outline-custom {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #2a2f35;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 4px;
+}
+
+.btn-outline-custom:hover {
+  background-color: #1c2125;
+  color: #ffffff;
+}
+
+/* Capa e Imagens */
+.book-cover {
+  width: 100%;
+  border-radius: 4px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+.mini-cover {
+  width: 46px;
+  height: 60px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+/* Card de Informações (Direita) */
+.info-card {
+  background-color: #1e2226;
+  border-radius: 4px;
+  padding: 18px;
+}
+
+.info-card-title {
+  color: #7d8590;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.78rem;
+}
+
+.info-label {
+  color: #7d8590;
+}
+
+.info-value {
+  color: #ffffff;
+  font-weight: 700;
+  text-align: right;
+  max-width: 130px;
+}
+
+/* Avatares */
+.avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.avatar-jg { background-color: #3b82f6; }
+.avatar-u { background-color: #e57373; }
+.avatar-a { background-color: #81c784; }
+.avatar-i { background-color: #ba68c8; }
+.avatar-g { background-color: #e040fb; }
+.avatar-y { background-color: #00bcd4; }
+.avatar-k { background-color: #7e57c2; }
+.avatar-c { background-color: #9c27b0; }
+.avatar-f { background-color: #d4e157; color: #000000; }
+
+/* Estrelas */
+.star-rating {
+  color: #00e676;
+  font-size: 0.85rem;
+}
+
+.star-xs {
+  font-size: 10px;
+}
+
+/* Seções e Separadores */
+.section-subtitle {
+  color: #7d8590;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.section-title {
+  color: #ffffff;
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.comment-text {
+  color: #b0b8c1;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.text-secondary-custom {
+  color: #7d8590;
+}
+
+.comment-divider, .section-divider {
+  border-color: #2a2f35;
+  opacity: 0.6;
+}
+
+.extra-small {
+  font-size: 0.72rem;
+}/* Estados das ações simuladas */
+.search-box:focus-within { outline: 1px solid #00e676; box-shadow: 0 0 0 3px rgba(0, 230, 118, .12); }
+.search-box input { width: 145px; }
+.btn { transition: background-color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.btn:focus-visible, .like-button:focus-visible, .recommendation-item:focus-visible { outline: 2px solid #00e676; outline-offset: 3px; }
+.btn-green:hover, .btn-outline-custom:hover { transform: translateY(-1px); }
+.btn-outline-custom.selecionado { color: #00e676; border-color: #00e676; background: rgba(0, 230, 118, .08); }
+.status-message { display: none; padding: 11px 14px; margin: 20px 0 0; border: 1px solid rgba(0, 230, 118, .25); border-radius: 7px; background: rgba(0, 230, 118, .08); color: #a7f3c8; font-size: .88rem; }
+.status-message.visivel { display: block; }
+.like-button { border: 0; padding: 3px 7px; border-radius: 5px; background: transparent; color: #7d8590; font-size: .75rem; transition: color .2s ease, background .2s ease; }
+.like-button:hover, .like-button.curtido { color: #ff6b81; background: rgba(255, 107, 129, .1); }
+.recommendation-item { padding: 7px; border: 1px solid transparent; border-radius: 8px; cursor: pointer; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+.recommendation-item:hover, .recommendation-item.livro-selecionado { background: #1c2125; border-color: #2d3834; transform: translateX(2px); }
+.recommendation-item[hidden], #semResultado[hidden] { display: none !important; }
+.review-card { margin: 12px 0; padding: 12px 14px; border-left: 3px solid #00e676; border-radius: 0 7px 7px 0; background: #171c1f; color: #b0b8c1; }
+.review-card strong { color: #00e676; font-size: .84rem; }
+.review-card p { margin: 6px 0 0; font-size: .85rem; }
+@media (max-width: 575.98px) { body.bg-outer { padding: 12px 8px; } .app-container { padding: 18px 15px; } .book-title { font-size: 1.8rem; } .search-box input { width: 100%; } .status-message { font-size: .82rem; } }
+/* Navegação principal LITTERA */
+.navbar {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 0;
+  margin: -30px -30px 28px;
+  background-color: rgba(18, 21, 23, .96);
+  border-bottom: 1px solid #212932;
+  backdrop-filter: blur(8px);
+}
+
+.nav-container {
+  max-width: 1240px;
+  min-height: 64px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.nav-left, .nav-right, .logo, .logo-dots, .nav-links, .user-profile {
+  display: flex;
+  align-items: center;
+}
+.nav-left { gap: 32px; min-width: 0; }
+.logo { gap: 8px; text-decoration: none; flex-shrink: 0; }
+.logo-dots { gap: 3px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot-amber { background-color: #f59e0b; }
+.dot-orange { background-color: #f97316; }
+.dot-green { background-color: #8cc63f; }
+.logo-text { color: #fff; letter-spacing: 2px; font-size: 16px; font-weight: 800; }
+.nav-links { gap: 20px; height: 64px; }
+.nav-links .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 2px 0 0;
+  color: #9ca3af !important;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .35px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s ease, border-color .2s ease;
+}
+.nav-links .nav-link:hover { color: #fff !important; }
+.nav-links .nav-link.active { color: #8cc63f !important; border-bottom-color: #8cc63f; }
+.nav-right { gap: 16px; flex-shrink: 0; }
+.search-box { position: relative; }
+.search-box input {
+  width: 180px;
+  padding: 7px 34px 7px 15px;
+  color: #e5e7eb;
+  background-color: #182029;
+  border: 1px solid rgba(75, 85, 99, .6);
+  border-radius: 9999px;
+  font-size: 12px;
+  outline: none;
+}
+.search-box input::placeholder { color: #8b949e; }
+.search-box input:focus { border-color: #8cc63f; box-shadow: 0 0 0 3px rgba(140, 198, 63, .12); }
+.search-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #8b949e; font-size: 12px; }
+.user-profile { gap: 8px; }
+.user-avatar {
+  width: 29px; height: 29px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid #64748b; border-radius: 50%; background: #475569; color: #fff;
+  font-size: 12px; font-weight: 700;
+}
+.user-name { color: #fff; font-size: 12px; font-weight: 600; white-space: nowrap; }
+#inicio, #explorar, #meus-livros, #recomendacoes, #comunidade { scroll-margin-top: 84px; }
+@media (max-width: 1050px) {
+  .nav-container { flex-wrap: wrap; justify-content: center; padding: 12px 18px; }
+  .nav-left { width: 100%; justify-content: space-between; gap: 16px; }
+  .nav-links { gap: 14px; }
+  .nav-right { width: 100%; justify-content: flex-end; }
+  .navbar { margin: -30px -30px 24px; }
+}
+@media (max-width: 600px) {
+  .navbar { position: relative; margin: -18px -15px 22px; }
+  .nav-container { padding: 12px 15px; gap: 12px; }
+  .nav-left { align-items: flex-start; flex-direction: column; }
+  .nav-links { height: auto; width: 100%; flex-wrap: wrap; gap: 8px 14px; }
+  .nav-links .nav-link { height: auto; padding: 4px 0; font-size: 10px; }
+  .nav-links .nav-link.active { border-bottom-width: 2px; }
+  .nav-right { justify-content: space-between; }
+  .search-box { flex: 1; }
+  .search-box input { width: 100%; }
+}
+/* Janela de avaliação por estrelas */
+.user-profile { color: inherit; text-decoration: none; cursor: pointer; transition: opacity .2s ease; }
+.user-profile:hover { opacity: .82; }
+.rating-modal { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,.72); backdrop-filter: blur(4px); }
+.rating-modal.aberto { display: flex; }
+.rating-box { position: relative; width: min(100%, 440px); padding: 30px; border: 1px solid #2a343d; border-radius: 14px; background: #151b22; box-shadow: 0 20px 70px rgba(0,0,0,.45); color: #e6edf3; }
+.rating-box h2 { margin: 7px 0; color: #fff; font-family: Georgia,serif; font-size: 1.7rem; }
+.rating-box > p { color: #8b949e; margin-bottom: 14px; }
+.modal-close { position: absolute; right: 15px; top: 10px; border: 0; background: none; color: #8b949e; font-size: 28px; line-height: 1; }
+.rating-stars { display: flex; gap: 8px; margin: 12px 0 20px; }
+.rating-stars button { padding: 0; border: 0; background: none; color: #46515c; font-size: 2.4rem; line-height: 1; cursor: pointer; transition: color .15s ease, transform .15s ease; }
+.rating-stars button:hover { transform: scale(1.12); }
+.rating-stars button.ativa { color: #fbbf24; }
+.rating-box label { display: block; margin-bottom: 7px; color: #c9d1d9; font-size: .88rem; font-weight: 600; }
+.rating-box textarea { width: 100%; resize: vertical; padding: 11px 12px; border: 1px solid #303943; border-radius: 8px; outline: 0; background: #0d1217; color: #e6edf3; }
+.rating-box textarea:focus { border-color: #8cc63f; box-shadow: 0 0 0 3px rgba(140,198,63,.12); }
+.rating-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 18px; }
+.rating-error { min-height: 20px; margin: 10px 0 0; color: #ff7b72; font-size: .82rem; }
+.search-box { margin: 0; }
+.search-submit { position: absolute; top: 0; right: 0; width: 34px; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.search-submit:focus-visible { outline: 2px solid #8cc63f; outline-offset: 2px; border-radius: 50%; }
+.search-submit .search-icon { pointer-events: none; }
