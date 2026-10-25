@@ -1,6 +1,8 @@
 <?php
 // Backend simulado. Os dados ficam na sessão e não usam banco de dados.
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $paginaAtual = '';
 $inicioHref = '../littera-landing/index.php';
 $meusLivrosHref = '../recomendacoes-e-meus-livros/meus-livros.php';
@@ -15,6 +17,7 @@ if (!isset($_SESSION['curtidas'])) $_SESSION['curtidas'] = [24, 30];
 
 if (isset($_GET['acao'])) {
     header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: no-store');
     $acao = $_GET['acao'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && $acao === 'livro') {
@@ -28,14 +31,22 @@ if (isset($_GET['acao'])) {
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $dados = json_decode(file_get_contents('php://input'), true) ?? [];
+        $dados = json_decode(file_get_contents('php://input'), true);
+        if (!is_array($dados)) {
+            http_response_code(400);
+            echo json_encode(['mensagem' => 'Corpo da requisição inválido.'], JSON_UNESCAPED_UNICODE);
+            exit;
+        }
 
         if ($acao === 'avaliar') {
             $nota = (int)($dados['nota'] ?? 0);
-            $comentario = trim($dados['comentario'] ?? '');
-            if ($nota < 1 || $nota > 5) {
+            $comentario = $dados['comentario'] ?? '';
+            $comentario = is_string($comentario) ? trim($comentario) : '';
+            $quantidadeCaracteres = preg_match_all('/./us', $comentario);
+            if ($nota < 1 || $nota > 5
+                || $quantidadeCaracteres === false || $quantidadeCaracteres > 1000) {
                 http_response_code(400);
-                echo json_encode(['mensagem' => 'Escolha uma nota de 1 a 5.'], JSON_UNESCAPED_UNICODE);
+                echo json_encode(['mensagem' => 'Escolha uma nota de 1 a 5 e limite o comentário a 1000 caracteres.'], JSON_UNESCAPED_UNICODE);
                 exit;
             }
             $_SESSION['avaliacoes'][] = ['nome' => 'João Gabriel', 'nota' => $nota, 'comentario' => $comentario];
@@ -48,7 +59,7 @@ if (isset($_GET['acao'])) {
             echo json_encode(['mensagem' => $_SESSION['lido'] ? 'Livro marcado como lido.' : 'Leitura desmarcada.'], JSON_UNESCAPED_UNICODE);
         } elseif ($acao === 'curtir') {
             $indice = (int)($dados['comentario'] ?? -1);
-            if ($indice < 0 || $indice > 1) {
+            if (!isset($_SESSION['curtidas'][$indice]) || $indice < 0 || $indice > 1) {
                 http_response_code(400);
                 echo json_encode(['mensagem' => 'Comentário inválido.'], JSON_UNESCAPED_UNICODE);
                 exit;
@@ -126,7 +137,7 @@ if (isset($_GET['acao'])) {
           <!-- Tag Status Indisponível -->
           <div class="mt-3">
             <span class="badge-indisponivel">
-              <span class="dot-red"></span> Indiponível no momento
+              <span class="dot-red"></span> Indisponível no momento
             </span>
           </div>
         </div>
@@ -183,7 +194,7 @@ if (isset($_GET['acao'])) {
       <!-- Coluna: Sobre o Livro -->
       <div class="col-12 col-md-4 col-lg-3" id="explorar">
         <span class="section-subtitle">SOBRE O LIVRO</span>
-        <h3 class="section-title">Umas história para atravessar mundo.</h3>
+        <h3 class="section-title">Uma história para atravessar mundos.</h3>
         <p class="text-secondary-custom small mt-3">
           Uma obra envolvente, cheia de camadas e perguntas que continuam reverberando muito depois da última página. É uma daquelas obras que ganha novas camadas a cada conversa e se transforma quando vista pelos olhos de outros leitores.
         </p>
@@ -191,7 +202,7 @@ if (isset($_GET['acao'])) {
 
       <!-- Coluna: Conversa em curso da comunidade -->
       <div class="col-12 col-md-8 col-lg-6" id="comunidade">
-        <span class="section-subtitle">COMVERSA EM CURSO</span>
+        <span class="section-subtitle">CONVERSA EM CURSO</span>
         <h3 class="section-title mb-4">da comunidade</h3>
 
         <!-- Comentário 1 -->
@@ -251,7 +262,7 @@ if (isset($_GET['acao'])) {
           <div class="d-flex gap-3 align-items-center recommendation-item" role="button" tabindex="0">
             <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=100&q=80" class="mini-cover" alt="Capa">
             <div>
-              <h6 class="mb-0 text-white fw-bold small">Hábitos Attons</h6>
+              <h6 class="mb-0 text-white fw-bold small">Hábitos Atômicos</h6>
               <span class="text-secondary-custom extra-small">James Clear</span>
             </div>
           </div>
@@ -300,6 +311,16 @@ if (isset($_GET['acao'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
   <script>
     const mensagem = document.getElementById('mensagemBackend');
+    const menuBotao = document.querySelector('.menu-toggle');
+    const menuNavegacao = document.querySelector('.main-nav');
+
+    if (menuBotao && menuNavegacao) {
+      menuBotao.addEventListener('click', function() {
+        const aberto = menuBotao.getAttribute('aria-expanded') === 'true';
+        menuBotao.setAttribute('aria-expanded', String(!aberto));
+        menuNavegacao.classList.toggle('open', !aberto);
+      });
+    }
 
     function mostrarMensagem(texto) {
       mensagem.textContent = texto;
@@ -314,9 +335,9 @@ if (isset($_GET['acao'])) {
           body: JSON.stringify(dados)
         });
         const resultado = await resposta.json();
-        if (!resposta.ok) throw new Error(resultado.mensagem);
+        if (!resposta.ok) throw new Error(resultado.mensagem || 'A solicitação não foi concluída.');
         mostrarMensagem(resultado.mensagem);
-        carregarDados();
+        await carregarDados();
       } catch (erro) {
         mostrarMensagem(erro.message || 'Não foi possível conectar ao PHP. Abra livro.php pelo servidor PHP.');
       }
@@ -325,6 +346,7 @@ if (isset($_GET['acao'])) {
     async function carregarDados() {
       try {
         const resposta = await fetch('livro.php?acao=livro');
+        if (!resposta.ok) throw new Error('Não foi possível carregar os dados do livro.');
         const dados = await resposta.json();
         document.getElementById('btnLista').textContent = dados.minha_lista ? '✓ Na minha lista' : '+ Minha lista';
         document.getElementById('btnLista').classList.toggle('selecionado', dados.minha_lista);
@@ -405,7 +427,8 @@ if (isset($_GET['acao'])) {
     document.querySelectorAll('.like-button').forEach(function(botao) {
       botao.addEventListener('click', function() { enviarAcao('curtir', { comentario: Number(botao.dataset.comentario) }); });
     });
-    document.getElementById('buscarLivros').addEventListener('input', function() {
+    const campoBuscaLivros = document.getElementById('buscarLivros');
+    if (campoBuscaLivros) campoBuscaLivros.addEventListener('input', function() {
       const busca = this.value.toLowerCase().trim();
       let encontrados = 0;
       document.querySelectorAll('.recommendation-item').forEach(function(item) {

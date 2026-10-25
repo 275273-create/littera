@@ -1,6 +1,10 @@
 <?php
 require __DIR__ . '/dados/livros-demo.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $paginaAtual = '';
 $inicioHref = '../littera-landing/index.php';
 $id = filter_var($_GET['id'] ?? 0, FILTER_VALIDATE_INT) ?: 0;
@@ -15,6 +19,63 @@ foreach ($livros as $item) {
 
 if (!$livro) {
     http_response_code(404);
+} else {
+    $statusSalvo = $_SESSION['status_livros'][$id] ?? null;
+    if (is_string($statusSalvo) && in_array($statusSalvo, ['quero_ler', 'lendo', 'lido'], true)) {
+        $livro['status'] = $statusSalvo;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $acao = $_POST['acao'] ?? '';
+        $token = $_POST['csrf_token'] ?? '';
+        $tokenSessao = $_SESSION['csrf_token'] ?? '';
+
+        if (!is_string($token) || !is_string($tokenSessao) || !hash_equals($tokenSessao, $token)) {
+            http_response_code(400);
+            $erroAcao = 'A sessão expirou. Atualize a página e tente novamente.';
+        } elseif ($acao === 'status') {
+            $status = $_POST['status'] ?? '';
+            if (!is_string($status) || !in_array($status, ['quero_ler', 'lendo', 'lido'], true)) {
+                http_response_code(400);
+                $erroAcao = 'Selecione um status válido.';
+            } else {
+                $_SESSION['status_livros'][$id] = $status;
+                header('Location: livro.php?id=' . $id . '&salvo=1', true, 303);
+                exit;
+            }
+        } elseif ($acao === 'avaliar') {
+            $nota = filter_var($_POST['nota'] ?? null, FILTER_VALIDATE_INT);
+            $texto = $_POST['texto'] ?? '';
+            $texto = is_string($texto) ? trim($texto) : '';
+
+            $quantidadeCaracteres = preg_match_all('/./us', $texto);
+            if ($nota === false || $nota < 1 || $nota > 5
+                || $quantidadeCaracteres === false || $quantidadeCaracteres > 1000) {
+                http_response_code(400);
+                $erroAcao = 'Escolha uma nota de 1 a 5 e limite o comentário a 1000 caracteres.';
+            } else {
+                $_SESSION['avaliacoes_livros'][$id][] = [
+                    'nota' => $nota,
+                    'texto' => $texto,
+                    'data' => date('d/m/Y H:i'),
+                ];
+                header('Location: livro.php?id=' . $id . '&avaliado=1#avaliacoes', true, 303);
+                exit;
+            }
+        } else {
+            http_response_code(400);
+            $erroAcao = 'Ação inválida.';
+        }
+    }
+}
+
+if (!isset($_SESSION['csrf_token']) || !is_string($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrfToken = $_SESSION['csrf_token'];
+$avaliacoesUsuario = $_SESSION['avaliacoes_livros'][$id] ?? [];
+if (!is_array($avaliacoesUsuario)) {
+    $avaliacoesUsuario = [];
 }
 ?>
 <!doctype html>
@@ -29,6 +90,14 @@ if (!$livro) {
   <?php require __DIR__ . '/includes/cabecalho.php'; ?>
 
   <main class="detail-page">
+    <?php if (!empty($erroAcao)): ?>
+      <p class="empty-state" role="alert"><?= escapar($erroAcao) ?></p>
+    <?php elseif (isset($_GET['salvo'])): ?>
+      <p class="empty-state" role="status">Status da leitura atualizado.</p>
+    <?php elseif (isset($_GET['avaliado'])): ?>
+      <p class="empty-state" role="status">Sua avaliação foi salva nesta sessão.</p>
+    <?php endif; ?>
+
     <?php if (!$livro): ?>
       <div class="empty-state">
         <h1>Livro não encontrado.</h1>
@@ -65,9 +134,18 @@ if (!$livro) {
           </p>
 
           <div class="actions">
-            <button class="accent" type="button">Avaliar livro</button>
-            <a href="meus-livros.php?status=lido">✓ Marcar como lido</a>
-            <a href="meus-livros.php?status=quero_ler">＋ Minha lista</a>
+            <a class="accent" href="#form-avaliacao">Avaliar livro</a>
+            <form method="post">
+              <input type="hidden" name="acao" value="status">
+              <input type="hidden" name="csrf_token" value="<?= escapar($csrfToken) ?>">
+              <label class="sr-only" for="status-livro">Status da leitura</label>
+              <select id="status-livro" name="status">
+                <option value="quero_ler" <?= $livro['status'] === 'quero_ler' ? 'selected' : '' ?>>Quero ler</option>
+                <option value="lendo" <?= $livro['status'] === 'lendo' ? 'selected' : '' ?>>Lendo</option>
+                <option value="lido" <?= $livro['status'] === 'lido' ? 'selected' : '' ?>>Lido</option>
+              </select>
+              <button type="submit">Salvar na estante</button>
+            </form>
           </div>
         </div>
 
@@ -104,9 +182,18 @@ if (!$livro) {
 
         <section class="community-reviews">
           <p class="kicker">CONVERSA EM CURSO</p>
-          <h2>Avaliações da comunidade</h2>
+          <h2 id="avaliacoes">Avaliações da comunidade</h2>
 
-          <?php foreach ($resenhasDemo as $indice => $resenha): ?>
+          <?php foreach (array_merge($resenhasDemo, array_map(
+              static fn($avaliacao) => [
+                  'nome' => 'Você',
+                  'nota' => (int) $avaliacao['nota'],
+                  'texto' => $avaliacao['texto'],
+                  'data' => $avaliacao['data'],
+                  'curtidas' => 0,
+              ],
+              $avaliacoesUsuario
+          )) as $indice => $resenha): ?>
             <article class="review">
               <span class="face face-<?= $indice ?>">
                 <?= escapar(substr($resenha['nome'], 0, 1)) ?>
@@ -120,6 +207,21 @@ if (!$livro) {
               </div>
             </article>
           <?php endforeach; ?>
+
+          <form class="review-form" id="form-avaliacao" method="post">
+            <input type="hidden" name="acao" value="avaliar">
+            <input type="hidden" name="csrf_token" value="<?= escapar($csrfToken) ?>">
+            <label for="nota-avaliacao">Sua nota</label>
+            <select id="nota-avaliacao" name="nota" required>
+              <option value="">Escolha de 1 a 5 estrelas</option>
+              <?php for ($nota = 5; $nota >= 1; $nota--): ?>
+                <option value="<?= $nota ?>"><?= $nota ?> estrela<?= $nota === 1 ? '' : 's' ?></option>
+              <?php endfor; ?>
+            </select>
+            <label for="texto-avaliacao">Comentário (opcional, até 1000 caracteres)</label>
+            <textarea id="texto-avaliacao" name="texto" maxlength="1000" rows="4"></textarea>
+            <button class="accent" type="submit">Salvar avaliação</button>
+          </form>
         </section>
 
         <aside>

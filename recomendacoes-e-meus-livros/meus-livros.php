@@ -1,6 +1,10 @@
 <?php
 require __DIR__ . '/dados/livros-demo.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $paginaAtual = 'meus-livros';
 $inicioHref = '../littera-landing/index.php';
 $nomesStatus = [
@@ -10,8 +14,19 @@ $nomesStatus = [
 ];
 
 $statusAtual = $_GET['status'] ?? 'lido';
-if (!isset($nomesStatus[$statusAtual])) {
+if (!is_string($statusAtual) || !isset($nomesStatus[$statusAtual])) {
     $statusAtual = 'lido';
+}
+
+$statusSalvo = $_SESSION['status_livros'] ?? [];
+if (is_array($statusSalvo)) {
+    foreach ($livros as &$livro) {
+        $status = $statusSalvo[$livro['id']] ?? null;
+        if (is_string($status) && isset($nomesStatus[$status])) {
+            $livro['status'] = $status;
+        }
+    }
+    unset($livro);
 }
 
 $livrosFiltrados = array_values(array_filter(

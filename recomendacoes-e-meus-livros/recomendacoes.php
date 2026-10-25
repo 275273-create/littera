@@ -3,7 +3,8 @@ require __DIR__ . '/dados/livros-demo.php';
 
 $paginaAtual = 'recomendacoes';
 $inicioHref = '../littera-landing/index.php';
-$busca = trim($_GET['busca'] ?? '');
+$busca = $_GET['busca'] ?? '';
+$busca = is_string($busca) ? trim($busca) : '';
 
 $livrosBusca = [];
 if ($busca !== '') {

@@ -122,7 +122,7 @@ function ordenar(array $lista, string $campo): array
                 return 0;
             }
 
-            return $valorA < $valorB ? -1 : 1;
+            return $valorA > $valorB ? -1 : 1;
         }
     );
 
@@ -131,7 +131,11 @@ function ordenar(array $lista, string $campo): array
 
 function paginar(array $lista, int $porPagina = 10): array
 {
-    $pagina = max(1, (int) (pegar_get('pagina', 1)));
+    $paginaSolicitada = pegar_get('pagina', 1);
+    $pagina = is_scalar($paginaSolicitada)
+        ? max(1, (int) $paginaSolicitada)
+        : 1;
+    $porPagina = max(1, $porPagina);
     $total = count($lista);
     $inicio = ($pagina - 1) * $porPagina;
     $dados = array_slice($lista, $inicio, $porPagina);
@@ -190,5 +194,8 @@ function livros_em_alta(string $filtro = '', int $limite = 5): array
 function responder(array $resultado): void
 {
     header('Content-Type: application/json; charset=utf-8');
-    echo json_encode($resultado, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo json_encode(
+        $resultado,
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR
+    );
 }

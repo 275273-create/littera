@@ -1,16 +1,16 @@
 <?php
 
-require '../funcoes.php';
+require __DIR__ . '/../funcoes.php';
 
 $usuario = usuario_logado();
 
-$id_usuario = 0;
-
-if ($usuario != null) {
-    $id_usuario = $usuario['id'];
-}
+$id_usuario = (int) ($usuario['id'] ?? 0);
 
 $filtro = pegar_get('filtro', 'todos');
+$filtrosValidos = ['todos', 'seguindo', 'curso'];
+if (!is_string($filtro) || !in_array($filtro, $filtrosValidos, true)) {
+    $filtro = 'todos';
+}
 
 $usuarios = ler('usuarios');
 
@@ -20,24 +20,26 @@ foreach (ler('avaliacoes') as $avaliacao) {
 
     $mostrar = true;
 
-    if ($usuario != null && $filtro == 'seguindo') {
+    if ($usuario !== null && $filtro === 'seguindo') {
 
         $seguindo = ids_que_sigo($usuario['id']);
 
         $mostrar = in_array(
-            $avaliacao['usuario_id'],
+            (int) $avaliacao['usuario_id'],
             $seguindo
         );
     }
 
-    if ($usuario != null && $filtro == 'curso') {
+    if ($usuario !== null && $filtro === 'curso') {
 
         $autor = achar_por_id(
             $usuarios,
             $avaliacao['usuario_id']
         );
 
-        $mostrar = ($autor['curso'] == $usuario['curso']);
+        $mostrar = $autor !== null
+            && isset($autor['curso'], $usuario['curso'])
+            && $autor['curso'] === $usuario['curso'];
     }
 
     if ($mostrar == true) {

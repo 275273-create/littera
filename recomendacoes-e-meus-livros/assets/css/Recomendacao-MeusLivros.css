@@ -356,6 +356,19 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   flex-wrap:wrap;
   gap:8px
 }
+.actions form {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px
+}
+.actions select,.review-form select,.review-form textarea {
+  min-height:38px;
+  padding:8px;
+  border:1px solid #45545b;
+  border-radius:3px;
+  background:#192328;
+  color:var(--text)
+}
 .actions>a:not(.accent),.actions>button:not(.accent) {
   padding:10px 12px;
   border:1px solid #45545b;
@@ -363,6 +376,31 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   background:transparent;
   color:#dbe5e5;
   font-size:12px
+}
+.actions form button,.review-form button {
+  padding:10px 12px;
+  border:1px solid #45545b;
+  border-radius:3px;
+  background:transparent;
+  color:#dbe5e5;
+  font-size:12px;
+  cursor:pointer
+}
+.review-form {
+  display:grid;
+  gap:9px;
+  margin-top:24px
+}
+.review-form label {
+  color:#c9d4da;
+  font-size:12px
+}
+.review-form textarea {
+  width:100%;
+  resize:vertical
+}
+.review-form button {
+  justify-self:start
 }
 .info-card {
   padding:18px;
@@ -609,6 +647,13 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   .actions>a,.actions>button {
     font-size:10px!important;
     padding:9px 8px!important
+  }
+  .actions form {
+    width:100%
+  }
+  .actions form select,.actions form button {
+    flex:1;
+    font-size:10px
   }
   .info-card {
     grid-column:1/-1

@@ -135,7 +135,22 @@
 @media (max-width: 820px) {
   .site-head { flex-wrap: wrap; padding: 12px 24px; }
   .menu-toggle { display: block; order: 2; margin-left: auto; }
-  .main-nav { order: 4; width: 100%; margin-left: 0; overflow-x: auto; }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    order: 4;
+    width: 100%;
+    margin: 0;
+    padding: 12px 24px;
+    background: #11171b;
+    border-bottom: 1px solid var(--header-line);
+    flex-direction: column;
+    gap: 16px;
+  }
+  .main-nav.open { display: flex; }
   .header-search { order: 3; min-width: 120px; }
   .header-search input { width: 88px; }
   .notice, .user { display: none; }

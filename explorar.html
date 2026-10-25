@@ -400,9 +400,9 @@
                 <nav class="nav-links">
                     <a href="index.html" class="nav-link">INÍCIO</a>
                     <a href="explorar.html" class="nav-link active">EXPLORAR</a>
-                    <a href="#" class="nav-link">MEUS LIVROS</a>
-                    <a href="#" class="nav-link">RECOMENDAÇÕES</a>
-                    <a href="#" class="nav-link">COMUNIDADE</a>
+                    <a href="recomendacoes-e-meus-livros/meus-livros.php" class="nav-link">MEUS LIVROS</a>
+                    <a href="recomendacoes-e-meus-livros/recomendacoes.php" class="nav-link">RECOMENDAÇÕES</a>
+                    <a href="comunidade/index.php" class="nav-link">COMUNIDADE</a>
                 </nav>
             </div>
 
@@ -426,11 +426,10 @@
     <h1 class="titulo-principal">Descubra sua próxima leitura</h1>
     <p class="descricao-hero">Obras que a sua comunidade está lendo, avaliando e recomendando.</p>
 
-    <div class="caixa-busca-principal">
-      <input type="text" class="campo-busca-grande" placeholder="">
-      
-      <button class="btn-buscar-grande"> BUSCAR </button>
-    </div>
+    <form class="caixa-busca-principal" action="recomendacoes-e-meus-livros/recomendacoes.php" method="get">
+      <input id="busca-catalogo" name="busca" type="search" class="campo-busca-grande" placeholder="Título ou autor" aria-label="Buscar por título ou autor">
+      <button type="submit" class="btn-buscar-grande">BUSCAR</button>
+    </form>
 
     <div class="tags-categorias">
       <span class="tag-item">Romance</span>

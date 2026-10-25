@@ -520,6 +520,7 @@ h1, h2, h3, p  {
 }
 
 .cartao-recurso  {
+   display: block;
    position: relative;
    min-height: 265px;
    padding: 23px 21px;
