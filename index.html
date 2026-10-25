@@ -34,10 +34,12 @@
             </div>
 
             <div class="nav-right">
-                <div class="search-box">
-                    <input type="text" placeholder="Buscar Livros">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                </div>
+                <form class="search-box" action="recomendacoes-e-meus-livros/recomendacoes.php" method="get">
+                    <input type="search" name="busca" placeholder="Buscar Livros" aria-label="Buscar livros">
+                    <button type="submit" class="search-icon" aria-label="Buscar">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    </button>
+                </form>
 
                 <div class="user-profile">
                     <div class="user-avatar">JG</div>

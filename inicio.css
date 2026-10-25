@@ -144,6 +144,13 @@ body {
   font-size: 10px;
 }
 
+button.search-icon {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .user-profile {
   display: flex;
   align-items: center;

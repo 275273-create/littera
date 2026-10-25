@@ -4,17 +4,17 @@ Página independente para apresentar o Littera. A ilustração de livros é feit
 
 ## Executar
 
-Na pasta `littera-landing`, execute:
+Na pasta raiz do projeto, execute:
 
 ```bash
-php -S localhost:8001
+php -S 127.0.0.1:8000
 ```
 
-Abra `http://localhost:8001/` no navegador.
+Abra `http://127.0.0.1:8000/` no navegador. O arquivo raiz encaminha para esta página.
 
 ## Configurar o link de login
 
-Quando a tela de login estiver pronta, altere `$loginUrl` em `config/login.php`. Os botões de entrada usam esse valor. Enquanto ele estiver como `#`, a página informa que o login ainda não foi conectado.
+Esta versão não implementa autenticação. Os botões de entrada exibem um aviso de que o login ainda não está conectado.
 
 ## Arquivos
 
