@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LITTERA - Plataforma de Livros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+    
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <div class="logo-dots">
+                        <span class="dot dot-amber"></span>
+                        <span class="dot dot-orange"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <span class="logo-text">LITTERA</span>
+                </div>
+
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link active">INÍCIO</a>
+                    <a href="explorar.html" class="nav-link">EXPLORAR</a>
+                    <a href="#" class="nav-link">MEUS LIVROS</a>
+                    <a href="#" class="nav-link">RECOMENDAÇÕES</a>
+                    <a href="#" class="nav-link">COMUNIDADE</a>
+                </nav>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar Livros">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">JG</div>
+                    <span class="user-name">João Gabriel</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <section class="hero-card">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1600&auto=format&fit=crop" alt="Bookshelf background">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-book-wrapper">
+                    <span class="badge-tag">DESTAQUE DA SEMANA</span>
+                    <div class="hero-book-cover">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQP30t5QNw3ph2dK1aFChZzLWj4jojPBOWkvr8Zxpzy2sSt2D5pbwy_eA&s=10" alt="Hipótese do Amor">
+                    </div>
+                </div>
+
+                <div class="hero-details">
+                    <h1 class="hero-title">Hipótese do Amor</h1>
+                    <p class="hero-subtitle">DE ALI HAZELWOOD - 2021</p>
+
+                    <div class="rating-row">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <span class="rating-value">4.5</span>
+                        <span class="rating-count">125 avaliações</span>
+                    </div>
+
+                    <p class="hero-description">
+                        Olive finge namorar Adam, um professor arrogante, mas acaba descobrindo que o amor pode surgir quando menos se espera.
+                    </p>
+
+                    <div class="hero-tags">
+                        <span class="tag tag-dark">Romance</span>
+                        <span class="tag tag-green">Disponível na biblioteca</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-grid">
+
+            <div class="main-feed">
+
+                <section class="feed-section">
+                    <div class="section-header-title">
+                        <h2>EM MOVIMENTO</h2>
+                        <p>Atividade da comunidade</p>
+                    </div>
+
+                    <div class="activity-list">
+
+                        <div class="activity-card">
+                            <div class="activity-user-header">
+                                <div class="user-icon"><i class="fa-solid fa-user"></i></div>
+                                <div>
+                                    <span class="font-bold text-white">Ana Luísa</span>
+                                    <span class="text-muted"> avaliou </span>
+                                    <span class="highlight-link">O Hobbit</span>
+                                </div>
+                            </div>
+                            <div class="activity-body">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzQlek_1-ThOZaxTUX0FBOTRE-w-uiw2y5aPj6f08lBoiG30t1J_oggGY&s=10" alt="O Hobbit" class="book-thumb">
+                                <div class="activity-details">
+                                    <div class="stars text-amber">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="review-text">"Uma leitura excelente. A construção do mundo é tão viva que dá vontade de seguir viagem junto com Bilbo."</p>
+                                    <div class="review-meta">
+                                        <span>há 2 horas</span>
+                                        <span>·</span>
+                                        <span class="like-count"><i class="fa-regular fa-heart"></i> 24 curtidas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-user-header">
+                                <div class="user-icon"><i class="fa-solid fa-user"></i></div>
+                                <div>
+                                    <span class="font-bold text-white">Rafael Moura</span>
+                                    <span class="text-muted"> avaliou </span>
+                                    <span class="highlight-link">Torto Arado</span>
+                                </div>
+                            </div>
+                            <div class="activity-body">
+                                <img src="https://m.media-amazon.com/images/I/71CDcBHXuDL._AC_UF1000,1000_QL80_.jpg" alt="Torto Arado" class="book-thumb">
+                                <div class="activity-details">
+                                    <div class="stars text-amber">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="review-text">"A linguagem é muito bonita e a história prende pela delicadeza. Foi uma das leituras mais marcantes do semestre."</p>
+                                    <div class="review-meta">
+                                        <span>há 5 horas</span>
+                                        <span>·</span>
+                                        <span class="like-count"><i class="fa-regular fa-heart"></i> 17 curtidas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="activity-card no-border">
+                            <div class="activity-user-header">
+                                <div class="user-icon"><i class="fa-solid fa-user"></i></div>
+                                <div>
+                                    <span class="font-bold text-white">João Lima</span>
+                                    <span class="text-muted"> avaliou </span>
+                                    <span class="highlight-link">Coraline</span>
+                                </div>
+                            </div>
+                            <div class="activity-body">
+                                <img src="https://m.media-amazon.com/images/I/91DZobBc1BL.jpg" alt="Livro" class="book-thumb">
+                                <div class="activity-details">
+                                    <div class="stars text-amber">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-muted"></i>
+                                    </div>
+                                    <p class="review-text">"Me fez pensar muito sobre escolhas, sem perder a leveza. Perfeito para conversar depois da aula."</p>
+                                    <div class="review-meta">
+                                        <span>ontem</span>
+                                        <span>·</span>
+                                        <span class="like-count"><i class="fa-regular fa-heart"></i> 31 curtidas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-card no-border">
+                            <div class="activity-user-header">
+                                <div class="user-icon"><i class="fa-solid fa-user"></i></div>
+                                <div>
+                                    <span class="font-bold text-white">Caio Reis</span>
+                                    <span class="text-muted"> avaliou </span>
+                                    <span class="highlight-link">Duna</span>
+                                </div>
+                            </div>
+                            <div class="activity-body">
+                                <img src="https://m.media-amazon.com/images/I/61eaTAhNj6L._AC_UF1000,1000_QL80_.jpg" alt="Duna" class="book-thumb">
+                                <div class="activity-details">
+                                    <div class="stars text-amber">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="review-text">"É grandioso, político e estranhamente atual. Demorei para entrar, mas depois não consegui largar."</p>
+                                    <div class="review-meta">
+                                        <span>ontem</span>
+                                        <span>·</span>
+                                        <span class="like-count"><i class="fa-regular fa-heart"></i> 19 curtidas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="popular-section">
+                    <div class="section-title-bar">
+                        <h2 class="section-heading">Populares na sua comunidade</h2>
+                        <a href="#" class="see-all-link">ver todos <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="popular-books-grid">
+                        <div class="grid-book-card">
+                            <div class="grid-book-cover">
+                                <img src="https://m.media-amazon.com/images/I/71CDcBHXuDL._AC_UF1000,1000_QL80_.jpg" alt="Torto Arado">
+                            </div>
+                            <h3 class="grid-book-title">Torto Arado</h3>
+                            <p class="grid-book-author">Itamar Vieira Junior</p>
+                            <div class="grid-book-rating">
+                                <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <span class="rating-num">4.8</span>
+                            </div>
+                        </div>
+
+                        <div class="grid-book-card">
+                            <div class="grid-book-cover">
+                                <img src="https://m.media-amazon.com/images/I/61eaTAhNj6L._AC_UF1000,1000_QL80_.jpg" alt="Duna">
+                            </div>
+                            <h3 class="grid-book-title">Duna</h3>
+                            <p class="grid-book-author">Frank Herbert</p>
+                            <div class="grid-book-rating">
+                                <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <span class="rating-num">4.9</span>
+                            </div>
+                        </div>
+
+                        <div class="grid-book-card">
+                            <div class="grid-book-cover">
+                                <img src="https://m.media-amazon.com/images/I/81p29WCHFaL._AC_UF1000,1000_QL80_.jpg" alt="O Avesso da Pele">
+                            </div>
+                            <h3 class="grid-book-title">O Avesso da Pele</h3>
+                            <p class="grid-book-author">Jeferson Tenório</p>
+                            <div class="grid-book-rating">
+                                <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <span class="rating-num">4.7</span>
+                            </div>
+                        </div>
+
+                        <div class="grid-book-card">
+                            <div class="grid-book-cover">
+                                <img src="https://m.media-amazon.com/images/I/91AHNAr638L.jpg" alt="O Conto da Aia">
+                            </div>
+                            <h3 class="grid-book-title">O Conto da Aia</h3>
+                            <p class="grid-book-author">Margaret Atwood</p>
+                            <div class="grid-book-rating">
+                                <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <span class="rating-num">4.6</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <aside class="sidebar">
+
+                <div class="sidebar-block">
+                    <h3 class="sidebar-title">Livros em alta</h3>
+                    <div class="sidebar-list">
+                        <div class="sidebar-book-item">
+                            <img src="https://m.media-amazon.com/images/I/61eaTAhNj6L._AC_UF1000,1000_QL80_.jpg" alt="Duna">
+                            <div class="sidebar-book-info">
+                                <h4>Duna</h4>
+                                <p>Frank Herbert</p>
+                                <div class="stars-row">
+                                    <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    <span class="sidebar-rating">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-book-item">
+                            <img src="https://m.media-amazon.com/images/I/81p29WCHFaL._AC_UF1000,1000_QL80_.jpg" alt="O Avesso da Pele">
+                            <div class="sidebar-book-info">
+                                <h4>O Avesso da Pele</h4>
+                                <p>Jeferson Tenório</p>
+                                <div class="stars-row">
+                                    <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    <span class="sidebar-rating">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-book-item">
+                            <img src="https://m.media-amazon.com/images/I/91AHNAr638L.jpg" alt="O Conto da Aia">
+                            <div class="sidebar-book-info">
+                                <h4>O Conto da Aia</h4>
+                                <p>Margaret Atwood</p>
+                                <div class="stars-row">
+                                    <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    <span class="sidebar-rating">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-book-item">
+                            <img src="https://m.media-amazon.com/images/I/81eT2pjx4jL.jpg" alt="Hábitos Atômicos">
+                            <div class="sidebar-book-info">
+                                <h4>Hábitos Atômicos</h4>
+                                <p>James Clear</p>
+                                <div class="stars-row">
+                                    <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    <span class="sidebar-rating">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-block">
+                    <h3 class="sidebar-title">Mais bem avaliados</h3>
+                    <div class="sidebar-list">
+                        <div class="sidebar-book-item">
+                            <img src="https://m.media-amazon.com/images/I/91DZobBc1BL.jpg" alt="Coraline">
+                            <div class="sidebar-book-info">
+                                <h4>Coraline</h4>
+                                <p>Neil Gaiman</p>
+                                <div class="stars-row">
+                                    <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    <span class="sidebar-rating">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-book-item">
+                            <img src="https://m.media-amazon.com/images/I/6132ndvQdiL.jpg" alt="Extraordinário">
+                            <div class="sidebar-book-info">
+                                <h4>Extraordinário</h4>
+                                <p>R. J. Palacio</p>
+                                <div class="stars-row">
+                                    <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    <span class="sidebar-rating">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-book-item">
+                            <img src="https://m.media-amazon.com/images/I/91AHNAr638L.jpg" alt="O Conto da Aia">
+                            <div class="sidebar-book-info">
+                                <h4>O Conto da Aia</h4>
+                                <p>Margaret Atwood</p>
+                                <div class="stars-row">
+                                    <div class="stars text-amber"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    <span class="sidebar-rating">4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-block">
+                    <h3 class="sidebar-title">Leitores mais bem avaliados</h3>
+                    <div class="readers-list">
+
+                        <div class="reader-item">
+                            <div class="reader-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div class="reader-info">
+                                <h4>Ana Luísa</h4>
+                                <p>12 livros · 8 resenhas</p>
+                            </div>
+                        </div>
+
+                        <div class="reader-item">
+                            <div class="reader-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div class="reader-info">
+                                <h4>Rafael Moura</h4>
+                                <p>19 livros · 9 resenhas</p>
+                            </div>
+                        </div>
+
+                        <div class="reader-item">
+                            <div class="reader-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div class="reader-info">
+                                <h4>Beatriz Lima</h4>
+                                <p>26 livros · 10 resenhas</p>
+                            </div>
+                        </div>
+
+                        <div class="reader-item">
+                            <div class="reader-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div class="reader-info">
+                                <h4>Caio Reis</h4>
+                                <p>33 livros · 11 resenhas</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

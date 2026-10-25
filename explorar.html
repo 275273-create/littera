@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LITTERA - Catálogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+            
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        :root {
+        --bg-dark: #0d1217;
+        --card-bg: #151b22;
+        --border-color: #212932;
+        --text-primary: #e6edf3;
+        --text-muted: #8b949e;
+        --brand-green: #8cc63f;
+        --brand-light-green: #a2e048;
+        --star-gold: #fbbf24;
+        }
+
+        body {
+        background-color: var(--bg-dark);
+        color: var(--text-primary);
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.5;
+        padding-bottom: 48px;
+        }
+
+        .navbar {
+        background-color: rgba(13, 18, 23, 0.95);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 16px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        font-weight: 500;
+        }
+
+        .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        }
+
+        .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        }
+
+        .logo-dots {
+        display: flex;
+        gap: 2px;
+        }
+
+        .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        }
+
+        .dot-amber { background-color: #f59e0b; }
+        .dot-orange { background-color: #abc500; }
+        .dot-green { background-color: #93baf0; }
+
+        .logo-text {
+        color: #ffffff;
+        letter-spacing: 2px;
+        font-size: 16px;
+        font-weight: 800;
+        text-transform: uppercase;
+        }
+
+        .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        }
+
+        .nav-link {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+        color: #ffffff;
+        }
+
+        .nav-link.active {
+        color: var(--brand-green);
+        font-weight: 600;
+        border-bottom: 2px solid var(--brand-green);
+        padding-bottom: 16px;
+        margin-top: 16px;
+        }
+
+        .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        }
+
+        .search-box {
+        position: relative;
+        }
+
+        .search-box input {
+        background-color: #182029;
+        border: 1px solid rgba(75, 85, 99, 0.6);
+        border-radius: 9999px;
+        padding: 6px 32px 6px 16px;
+        font-size: 12px;
+        color: #e5e7eb;
+        width: 220px;
+        outline: none;
+        }
+
+        .search-box input::placeholder {
+        color: #6b7280;
+        }
+
+        .search-box input:focus {
+        border-color: #9ca3af;
+        }
+
+        .search-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #6b7280;
+        font-size: 10px;
+        }
+
+        .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        }
+
+        .user-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: #475569;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #64748b;
+        }
+
+        .user-name {
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 600;
+        }
+
+    .hero-secao {
+      text-align: center;
+      padding: 42px 20px 24px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .subtitulo-catalogo {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .titulo-principal {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 36px;
+      color: #f3a852;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .descricao-hero {
+      color: #8b949e;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .caixa-busca-principal {
+      max-width: 620px;
+      margin: 0 auto 28px auto;
+      position: relative;
+    }
+
+    .campo-busca-grande {
+      width: 100%;
+      background-color: #151b22;
+      border: 1px solid #2a3441;
+      border-radius: 30px;
+      padding: 13px 120px 13px 24px;
+      color: #ffffff;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .campo-busca-grande:focus {
+      border-color: #a3e635;
+    }
+
+    .btn-buscar-grande {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: #8b949e;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .btn-buscar-grande:hover {
+      color: #ffffff;
+    }
+
+    .tags-categorias {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px 20px;
+    
+      
+    }
+
+    .tag-item {
+      font-size: 12px;
+      color: #9ca3af;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .tag-item:hover {
+      color: #a3e635;
+    }
+
+    .conteudo-principal {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 0 1px;
+    }
+
+    .secao-livros {
+      margin-top: 36px;
+    }
+
+    .titulo-secao {
+      font-size: 13px;
+      font-weight: 800;
+      color: #a3e635;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .grid-livros {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card-livro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .capa-container {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: #161b22;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card-livro:hover .capa-container {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .capa-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .titulo-livro {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 3px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .autor-livro {
+      font-size: 11px;
+      color: #8b949e;
+      margin-bottom: 4px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .avaliacao-linha {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+    }
+
+    .estrelas {
+      color: #a3e635;
+      font-size: 10px;
+      letter-spacing: -1px;
+    }
+
+    .nota-numero {
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      margin-left: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .grid-livros {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .menu-navegacao {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-dots">
+                        <span class="dot dot-amber"></span>
+                        <span class="dot dot-orange"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <span class="logo-text">LITTERA</span>
+                </div>
+                
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link">INÍCIO</a>
+                    <a href="explorar.html" class="nav-link active">EXPLORAR</a>
+                    <a href="#" class="nav-link">MEUS LIVROS</a>
+                    <a href="#" class="nav-link">RECOMENDAÇÕES</a>
+                    <a href="#" class="nav-link">COMUNIDADE</a>
+                </nav>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar Livros">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">JG</div>
+                    <span class="user-name">João Gabriel</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <section class="hero-secao">
+    <h2 class="subtitulo-catalogo">CATÁLOGO LITTERA</h2>
+    <h1 class="titulo-principal">Descubra sua próxima leitura</h1>
+    <p class="descricao-hero">Obras que a sua comunidade está lendo, avaliando e recomendando.</p>
+
+    <div class="caixa-busca-principal">
+      <input type="text" class="campo-busca-grande" placeholder="">
+      
+      <button class="btn-buscar-grande"> BUSCAR </button>
+    </div>
+
+    <div class="tags-categorias">
+      <span class="tag-item">Romance</span>
+      <span class="tag-item">Fantasia</span>
+      <span class="tag-item">Ficção</span>
+      <span class="tag-item">Suspense</span>
+      <span class="tag-item">Tecnologia</span>
+      <span class="tag-item">História</span>
+      <span class="tag-item">Filosofia</span>
+      <span class="tag-item">Literatura</span>
+      <span class="tag-item">Brasileira</span>
+      <span class="tag-item">Desenvolvimento Pessoal</span>
+    </div>
+  </section>
+
+  <main class="conteudo-principal">
+    <section class="secao-livros">
+      <h3 class="titulo-secao">MAIS BEM AVALIADOS</h3>
+      <div class="grid-livros">
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/71CDcBHXuDL._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="Torto Arado">
+          </div>
+          <h4 class="titulo-livro">Torto Arado</h4>
+          <p class="autor-livro">Itamar Vieira Junior</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.8</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://br.web.img3.acsta.net/c_310_420/pictures/21/09/29/20/10/5897145.jpg" class="capa-img" alt="Duna">
+          </div>
+          <h4 class="titulo-livro">Duna</h4>
+          <p class="autor-livro">Frank Herbert</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.9</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/81p29WCHFaL._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="O Avesso da Pele">
+          </div>
+          <h4 class="titulo-livro">O Avesso da Pele</h4>
+          <p class="autor-livro">Jeferson Tenório</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.7</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/91AHNAr638L._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="O Conto da Aia">
+          </div>
+          <h4 class="titulo-livro">O Conto da Aia</h4>
+          <p class="autor-livro">Margaret Atwood</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.6</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="secao-livros">
+      <h3 class="titulo-secao">EM ALTA ENTRE OS ESTUDANTES</h3>
+      <div class="grid-livros">
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/91DZobBc1BL.jpg" class="capa-img" alt="Coraline">
+          </div>
+          <h4 class="titulo-livro">Coraline</h4>
+          <p class="autor-livro">Neil Gaiman</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.8</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://upload.wikimedia.org/wikipedia/pt/4/47/O-pequeno-pr%C3%ADncipe.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="capa-img" alt="O Pequeno Príncipe">
+          </div>
+          <h4 class="titulo-livro">O Pequeno Príncipe</h4>
+          <p class="autor-livro">Antoine de Saint-Exupéry</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.9</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/91qVTRzBNgL.jpg" class="capa-img" alt="A Metamorfose">
+          </div>
+          <h4 class="titulo-livro">A Metamorfose</h4>
+          <p class="autor-livro">Franz Kafka</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.7</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/91M9xPIf10L.jpg" class="capa-img" alt="O Hobbit">
+          </div>
+          <h4 class="titulo-livro">O Hobbit</h4>
+          <p class="autor-livro">J. R. R. Tolkien</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.6</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="secao-livros">
+      <h3 class="titulo-secao">ADICIONADOS RECENTEMENTE</h3>
+      <div class="grid-livros">
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/61jgm6ooXzL._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="Harry Potter">
+          </div>
+          <h4 class="titulo-livro">Harry Potter</h4>
+          <p class="autor-livro">J. K. Rowling</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.8</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/618fXbK+OkL.jpg" class="capa-img" alt="Crepúsculo">
+          </div>
+          <h4 class="titulo-livro">Crepúsculo</h4>
+          <p class="autor-livro">Stephenie Meyer</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.9</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/61zBhzjS4LL._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="Jogos Vorazes">
+          </div>
+          <h4 class="titulo-livro">Jogos Vorazes</h4>
+          <p class="autor-livro">Suzanne Collins</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.7</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/6132ndvQdiL.jpg" class="capa-img" alt="Extraordinário">
+          </div>
+          <h4 class="titulo-livro">Extraordinário</h4>
+          <p class="autor-livro">R. J. Palacio</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.6</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="secao-livros">
+      <h3 class="titulo-secao">VOCÊ PODE GOSTAR</h3>
+      <div class="grid-livros">
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/71CDcBHXuDL._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="Torto Arado">
+          </div>
+          <h4 class="titulo-livro">Torto Arado</h4>
+          <p class="autor-livro">Itamar Vieira Junior</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.8</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://br.web.img3.acsta.net/c_310_420/pictures/21/09/29/20/10/5897145.jpg" class="capa-img" alt="Duna">
+          </div>
+          <h4 class="titulo-livro">Duna</h4>
+          <p class="autor-livro">Frank Herbert</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.9</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/81p29WCHFaL._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="O Avesso da Pele">
+          </div>
+          <h4 class="titulo-livro">O Avesso da Pele</h4>
+          <p class="autor-livro">Jeferson Tenório</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.7</span>
+          </div>
+        </div>
+
+        <div class="card-livro">
+          <div class="capa-container">
+            <img src="https://m.media-amazon.com/images/I/91AHNAr638L._AC_UF1000,1000_QL80_.jpg" class="capa-img" alt="O Conto da Aia">
+          </div>
+          <h4 class="titulo-livro">O Conto da Aia</h4>
+          <p class="autor-livro">Margaret Atwood</p>
+          <div class="avaliacao-linha">
+            <span class="estrelas">★★★★★</span>
+            <span class="nota-numero">4.6</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
